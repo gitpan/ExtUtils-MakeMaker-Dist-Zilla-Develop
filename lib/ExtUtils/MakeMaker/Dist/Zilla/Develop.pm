@@ -1,6 +1,6 @@
 package ExtUtils::MakeMaker::Dist::Zilla::Develop;
 BEGIN {
-  $ExtUtils::MakeMaker::Dist::Zilla::Develop::VERSION = '0.01';
+  $ExtUtils::MakeMaker::Dist::Zilla::Develop::VERSION = '0.02';
 }
 use strict;
 use warnings;
@@ -26,12 +26,8 @@ EOF
 }
 
 {
-    package MY;
-BEGIN {
-  $MY::VERSION = '0.01';
-}
-
-    use Config;
+    package # hide from PAUSE
+        MY;
 
     my $message;
     BEGIN {
@@ -81,7 +77,7 @@ ExtUtils::MakeMaker::Dist::Zilla::Develop - create bare-bones Makefile.PL files 
 
 =head1 VERSION
 
-version 0.01
+version 0.02
 
 =head1 SYNOPSIS
 
