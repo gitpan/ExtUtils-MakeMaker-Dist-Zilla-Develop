@@ -1,6 +1,9 @@
 package ExtUtils::MakeMaker::Dist::Zilla::Develop;
 BEGIN {
-  $ExtUtils::MakeMaker::Dist::Zilla::Develop::VERSION = '0.02';
+  $ExtUtils::MakeMaker::Dist::Zilla::Develop::AUTHORITY = 'cpan:DOY';
+}
+{
+  $ExtUtils::MakeMaker::Dist::Zilla::Develop::VERSION = '0.03';
 }
 use strict;
 use warnings;
@@ -69,6 +72,7 @@ EOF
 1;
 
 __END__
+
 =pod
 
 =head1 NAME
@@ -77,7 +81,7 @@ ExtUtils::MakeMaker::Dist::Zilla::Develop - create bare-bones Makefile.PL files 
 
 =head1 VERSION
 
-version 0.02
+version 0.03
 
 =head1 SYNOPSIS
 
@@ -105,11 +109,9 @@ commands to generate your test suite, for example), and tell Dist::Zilla to
 replace it with a real C<Makefile.PL> when you're actually ready to build a
 real distribution. To do this, make sure you're still using the
 L<MakeMaker|Dist::Zilla::Plugin::MakeMaker> plugin, either directly or through
-a pluginbundle like L<@Basic|Dist::Zilla::PluginBundle::Basic>, and add this to
-your C<dist.ini>:
-
-  [PruneFiles]
-  filenames = Makefile.PL
+a pluginbundle like L<@Basic|Dist::Zilla::PluginBundle::Basic>, and add the
+C<exclude_filename = Makefile.PL> option to your F<dist.ini> where you use
+C<[GatherDir]>.
 
 In addition, this module also intercepts the C<install> and C<dist> rules in
 the generated Makefile to run the appropriate Dist::Zilla commands
@@ -136,23 +138,14 @@ exist initially, since this can confuse XSLoader.
 
 No known bugs.
 
-Please report any bugs through RT: email
-C<bug-extutils-makemaker-dist-zilla-develop at rt.cpan.org>, or browse to
-L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=ExtUtils-MakeMaker-Dist-Zilla-Develop>.
+Please report any bugs to GitHub Issues at
+L<https://github.com/doy/extutils-makemaker-dist-zilla-develop/issues>.
 
 =head1 SEE ALSO
 
-=over 4
-
-=item *
-
 L<ExtUtils::MakeMaker>
 
-=item *
-
 L<Dist::Zilla>
-
-=back
 
 =head1 SUPPORT
 
@@ -164,34 +157,33 @@ You can also look for information at:
 
 =over 4
 
-=item * AnnoCPAN: Annotated CPAN documentation
+=item * MetaCPAN
 
-L<http://annocpan.org/dist/ExtUtils-MakeMaker-Dist-Zilla-Develop>
+L<https://metacpan.org/release/ExtUtils-MakeMaker-Dist-Zilla-Develop>
 
-=item * CPAN Ratings
+=item * Github
 
-L<http://cpanratings.perl.org/d/ExtUtils-MakeMaker-Dist-Zilla-Develop>
+L<https://github.com/doy/extutils-makemaker-dist-zilla-develop>
 
 =item * RT: CPAN's request tracker
 
 L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=ExtUtils-MakeMaker-Dist-Zilla-Develop>
 
-=item * Search CPAN
+=item * CPAN Ratings
 
-L<http://search.cpan.org/dist/ExtUtils-MakeMaker-Dist-Zilla-Develop>
+L<http://cpanratings.perl.org/d/ExtUtils-MakeMaker-Dist-Zilla-Develop>
 
 =back
 
 =head1 AUTHOR
 
-Jesse Luehrs <doy at tozt dot net>
+Jesse Luehrs <doy@tozt.net>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2011 by Jesse Luehrs.
+This software is copyright (c) 2014 by Jesse Luehrs.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
 
 =cut
-
